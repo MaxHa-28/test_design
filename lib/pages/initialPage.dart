@@ -37,9 +37,9 @@ class _InitialPageState extends State<InitialPage> {
                 ),
                 Positioned.fill(
                   child: Align(
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.topCenter,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 20, right: 60),
+                      padding: EdgeInsets.only(top: 40),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -47,7 +47,7 @@ class _InitialPageState extends State<InitialPage> {
                             "Thermoy",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 40,
+                              fontSize: 80,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -60,6 +60,34 @@ class _InitialPageState extends State<InitialPage> {
                                 fontWeight: FontWeight.w300),
                           )
                         ],
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Image(
+                      image: AssetImage("assets/images/front.png"),
+                      fit: BoxFit.contain,
+                      height: 600,
+                      width: 300,
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      height: 600,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFF5036D5).withOpacity(0.01),
+                              Color(0xFF5B16D0).withOpacity(0.4),
+                            ]),
                       ),
                     ),
                   ),

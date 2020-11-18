@@ -16,6 +16,102 @@ const List<Destination> allDestinations = <Destination>[
   Destination(3, 'Einstellungen', Icons.settings, Color(0xFF5B16D0))
 ];
 
+class Homepage extends StatelessWidget {
+  Homepage({Key key, this.destination}) : super(key: key);
+
+  final Destination destination;
+
+  final TextStyle titleHome =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Colors.white);
+
+  final TextStyle bodyHome = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: destination.color,
+      body: Padding(
+        padding: EdgeInsets.all(40.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(
+            "Willkommen",
+            style: titleHome,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Maecenas a justo semper, fermentum neque vitae, auctor augue.
+Etiam in justo nisi. Nunc malesuada rhoncus dui eget viverra.
+tate dolor eu auctor efficitur.""",
+            style: bodyHome,
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Container(
+            height: 200,
+            width: double.maxFinite,
+            child: Center(
+              child: Text(
+                "Text in pinker Box",
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700),
+              ),
+            ),
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                radius: 1,
+                colors: [Colors.pink[300], Colors.pink[800]],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.pink.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          SizedBox(
+            height: 59,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              RaisedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.access_alarms),
+                label: Text("Zeit"),
+              ),
+              RaisedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.alternate_email),
+                label: Text("Email"),
+              ),
+              RaisedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.cached),
+                label: Text("Test"),
+              ),
+            ],
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
 class RootPage extends StatelessWidget {
   const RootPage({Key key, this.destination}) : super(key: key);
 
@@ -23,23 +119,66 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(destination.title),
-        backgroundColor: destination.color,
-      ),
-      backgroundColor: destination.color,
-      body: SizedBox.expand(
-        child: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, "/list");
-          },
-          child: Center(
-            child: Text('Tap für Liste'),
+    switch (destination.index) {
+      case 0:
+        return Homepage(destination: destination);
+
+      case 1:
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(destination.title),
+            backgroundColor: destination.color,
           ),
-        ),
-      ),
-    );
+          backgroundColor: destination.color,
+          body: SizedBox.expand(
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, "/list");
+              },
+              child: Center(
+                child: Text('Tap für Liste'),
+              ),
+            ),
+          ),
+        );
+      case 2:
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(destination.title),
+            backgroundColor: destination.color,
+          ),
+          backgroundColor: destination.color,
+          body: SizedBox.expand(
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, "/list");
+              },
+              child: Center(
+                child: Text('Tap für Liste'),
+              ),
+            ),
+          ),
+        );
+      case 3:
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(destination.title),
+            backgroundColor: destination.color,
+          ),
+          backgroundColor: destination.color,
+          body: SizedBox.expand(
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, "/list");
+              },
+              child: Center(
+                child: Text('Tap für Liste'),
+              ),
+            ),
+          ),
+        );
+    }
+    return Text("Not Found");
   }
 }
 
